@@ -9,4 +9,13 @@ function component(){
     element.appendChild(btn)
     return element;
 }
-document.body.appendChild(component())
+let element =component();
+document.body.appendChild(element)
+if(module.hot){
+    module.hot.accept('./print.js', function() {
+        console.log('Accepting the updated printMe module!');
+        document.body.removeChild(element);
+        let element =component();
+        document.body.appendChild(element)
+    })
+}
