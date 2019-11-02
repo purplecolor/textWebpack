@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --config webpack.dev.js --open"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +17,11 @@
     "file-loader": "^4.2.0",
     "lodash": "^4.17.15",
     "style-loader": "^1.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "util.promisify": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
+    "webpack-merge": "^4.2.2",
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
