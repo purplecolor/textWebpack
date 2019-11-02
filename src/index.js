@@ -1,12 +1,12 @@
 import _ from 'lodash';
-import printMe from './print.js';
-function component(){
-    var element = document.createElement('div');
-    element.innerHTML=_.join(['hello','webpack'])
-    var btn = document.createElement('button');
-    btn.innerHTML="点击我展示console!"
-    btn.onclick=printMe
-    element.appendChild(btn)
-    return element;
+function getComponent(){
+    return import(/* webpackChunkName:"lodash" */ 'lodash').then(_ =>{
+        var element=document.createElement('div');
+        element.innerHTML=_.join(['hello','webpack'],' ');
+        return element;
+    }).catch(error=>'An error occurred')
 }
 document.body.appendChild(component())
+getComponent().then(component=>{
+    document.body.appendChild(component)
+})
