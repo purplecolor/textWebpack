@@ -1,31 +1,27 @@
 const path=require('path');
+const webpack=require('webpack')
 module.exports={
-    entry:'./src/index.js',
+    entry:{
+        polyfills:'./src/polyfills.js',
+        index:'./src/index.js'
+    },
     output:{
-        filename:'bundle.js',
+        filename:'[name].bundle.js',
         path:path.resolve(__dirname,'dist')
     },
     module:{
         rules:[
             {
-                test:/\.css$/,
-                use:[
-                    'style-loader',
-                    'css-loader'
-                ]
+                test:require.resolve('index.js'),
+                use:'imports-loader?this=>window'
             },
             {
-                test:/\.(png|svg|jpg|gif)$/,
-                use:['file-loader']
-												},
-												{
-													test:/\.(csv|tsv)$/,
-													use:['csv-loader']
-												},
-												{
-													test:/\.xml$/,
-													use:['xml-loader']
-												}
+                test:require.resolve('globals.js'),
+                use:'exports-loader?file,parse=helpers.parse'
+            }
         ]
-    }
+    },
+    plugins:[
+        new webpack.ProvidePlugin({join:['lodash','join']})
+    ]
 }
