@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "start": "http-server dist"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +17,15 @@
     "csv-loader": "^3.0.2",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.11.1",
     "lodash": "^4.17.15",
     "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
     "util.promisify": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
+    "workbox-webpack-plugin": "^4.3.1",
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
