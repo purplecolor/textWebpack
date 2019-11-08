@@ -2,7 +2,9 @@ const path=require('path');
 const HtmlWebpackPlugin=require('html-webpack-plugin');
 const {CleanWebpackPlugin}=require('clean-webpack-plugin');
 const WorkboxPlugin=require('workbox-webpack-plugin')
-module.exports={
+module.exports=env=>{
+	console.log(env,'111111111111111')
+	return {
 		entry:'./src/index.js',
 		devtool:'inline-source-map',
 		output:{
@@ -29,4 +31,6 @@ module.exports={
 		resolve:{
 			extensions:['.tsx','ts','.js']
 		}
+	}
+		
 }
